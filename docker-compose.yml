@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: bitnami/mongodb:4.4
+    environment:
+      - MONGODB_USERNAME=my_user
+      - MONGODB_PASSWORD=password123
+      - MONGODB_DATABASE=my_database
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/mongodb_data:/bitnami/mongodb:Z
