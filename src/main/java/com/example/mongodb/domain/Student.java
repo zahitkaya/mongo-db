@@ -1,8 +1,9 @@
 package com.example.mongodb.domain;
 
+import com.example.mongodb.audit.Auditable;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -14,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Document("Student")
-public class Student {
+public class Student extends Auditable<String> {
     @Id
     String id;
 
