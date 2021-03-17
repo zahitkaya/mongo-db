@@ -38,12 +38,12 @@ public abstract class StudentDecorator implements StudentMapper {
                         .withRel("student")
                         .withType("GET")
                         .withDeprecation("List Students"),
-                linkTo(methodOn(StudentController.class).updateStudent(0,null))
+                linkTo(methodOn(StudentController.class).updateStudent(null,null))
                         .withRel("student")
                         .withType("PUT")
                         .withDeprecation("Update Student")
         };
-
+        studentDto.setId(student.getId());
         studentDto.add(links);
         return studentDto;
     }

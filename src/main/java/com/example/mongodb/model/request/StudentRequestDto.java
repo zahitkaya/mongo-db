@@ -3,6 +3,7 @@ package com.example.mongodb.model.request;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import nonapi.io.github.classgraph.json.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 

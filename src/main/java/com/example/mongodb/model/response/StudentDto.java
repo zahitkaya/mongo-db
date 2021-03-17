@@ -10,6 +10,7 @@ import org.springframework.hateoas.RepresentationModel;
 @NoArgsConstructor
 @Builder
 public class StudentDto extends RepresentationModel<StudentDto> {
+    String id;
     String name;
     String surname;;
     String email;

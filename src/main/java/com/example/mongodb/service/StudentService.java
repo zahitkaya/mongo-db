@@ -11,9 +11,9 @@ import java.util.List;
 public interface StudentService {
     StudentDto createStudent(StudentRequestDto student);
     public  Page<StudentDto> pullAllStudents(Pageable pageable);
-    StudentDto updateStudent(int id,StudentRequestDto student);
-     void deleteStudentById(int id);
-    StudentDto getStudentById(int id);
+    StudentDto updateStudent(String id,StudentRequestDto student);
+     void deleteStudentById(String id);
+    StudentDto getStudentById(String id);
 
 
 

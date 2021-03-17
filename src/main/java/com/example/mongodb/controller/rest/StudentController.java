@@ -64,7 +64,7 @@ public class StudentController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
 
     })
-    public void deleteById(@PathVariable int id){
+    public void deleteById(@PathVariable String id){
         studentServiceImpl.deleteStudentById(id);
     }
 
@@ -77,7 +77,7 @@ public class StudentController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
 
     })
-    public StudentDto getStudent(@PathVariable int id){
+    public StudentDto getStudent(@PathVariable String id){
         return studentServiceImpl.getStudentById(id);
     }
 
@@ -91,7 +91,7 @@ public class StudentController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
 
     })
-    public StudentDto updateStudent(@PathVariable int id,@RequestBody @Valid StudentRequestDto student){
+    public StudentDto updateStudent(@PathVariable String id,@RequestBody StudentRequestDto student){
         return studentServiceImpl.updateStudent(id,student);
     }
 

@@ -16,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.lang.reflect.ParameterizedType;
+
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -44,22 +46,23 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentDto updateStudent(int id, StudentRequestDto student) {
-        var exStudent = studentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Students", "id", id));
-        exStudent.setName(student.getName());
-        exStudent.setSurname(student.getSurname());
-        return studentMapper.studentEntityToStudentDto(exStudent);
+    public StudentDto updateStudent(String id, StudentRequestDto requestDto) {
+        var studentEntity = studentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Students", "id", id));
+        studentMapper.studentRequestToStudentResponse(requestDto,studentEntity);
+        studentRepository.save(studentEntity);
+        return studentMapper.studentEntityToStudentDto(studentEntity);
     }
 
     @Override
-    public void deleteStudentById(int id) {
+    public void deleteStudentById(String id) {
         log.info("Student deleted");
         studentRepository.deleteById(id);
     }
 
     @Override
-    public StudentDto getStudentById(int id) {
+    public StudentDto getStudentById(String id) {
         var student = studentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Students", "id", id));
         return studentMapper.studentEntityToStudentDto(student);
     }
+
 }
